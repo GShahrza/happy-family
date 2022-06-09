@@ -27,8 +27,9 @@ public class Main {
         System.out.println(familyOne.countFamily());
         System.out.println("******************************");
 
-        familyOne.deleteChild(0);
+        familyOne.deleteChild(girl);
         System.out.println(familyOne);
+        System.out.println(familyOne.countFamily());
         System.out.println("******************************");
 
         familyOne.setPet(less);

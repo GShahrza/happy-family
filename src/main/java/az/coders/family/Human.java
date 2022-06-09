@@ -2,17 +2,23 @@ package az.coders.family;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Random;
 
 public class Human {
 
-    private String name = "No Value";
+    private String name;
     private String surname;
     private short year;
     private byte iq;
 
     private String[][] schedule;
 
+    static {
+        System.out.println(Human.class.getName() + " class created");
+    }
+
+    {
+        System.out.println(Human.class.getName() + " object created");
+    }
     public Human() {
     }
 
@@ -72,10 +78,9 @@ public class Human {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+
         Human human = (Human) o;
-        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Arrays.equals(schedule, human.schedule);
+        return Objects.equals(name, human.name);
     }
 
     @Override

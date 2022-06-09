@@ -58,8 +58,8 @@ public class Family {
                 pet.getSpecies(), pet.getAge(), pet.getTrickLevel() > 50 ? "very sly" : "almost not sly");
     }
 
-    public void addChild(Human child){
-        Human[] newChildren = Arrays.copyOf(this.children,this.children.length+1);
+    public void addChild(Human child) {
+        Human[] newChildren = Arrays.copyOf(this.children, this.children.length + 1);
 
         newChildren[this.children.length] = child;
 
@@ -67,23 +67,35 @@ public class Family {
 
     }
 
-    public boolean deleteChild(int index){
-        if(index >= 0 && index < this.children.length){
-            Human[] newChildren = new Human[this.children.length-1];
+    public boolean deleteChild(int index) {
+        if (index >= 0 && index < this.children.length) {
+            Human[] newChildren = new Human[this.children.length - 1];
 
-            for (int i = 0,j=0; i < this.children.length; i++) {
-                if(index != i)  newChildren[j++] = this.children[i];
+            for (int i = 0, j = 0; i < this.children.length; i++) {
+                if (index != i) newChildren[j++] = this.children[i];
             }
             this.children = newChildren;
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
+
     }
 
-    public int countFamily(){
-        return 2+this.children.length;
+    public void deleteChild(Human child) {
+        Human[] newChildren = new Human[this.children.length - 1];
+
+        int j = 0;
+        for (Human human : this.getChildren()) {
+            if (!human.equals(child)) {
+                newChildren[j++] = human;
+            }
+        }
+        this.children = newChildren;
+
+    }
+
+    public int countFamily() {
+        return 2 + this.children.length;
     }
 
     public boolean feedPet(boolean bool) {
